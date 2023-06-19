@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "player.h"
+#include "Map.h"
+#include "Move.h"
+#include "Camera.h"
 
 using namespace sf;
 
@@ -10,9 +12,13 @@ class Engine{
     Engine();
     void init();
     void loop();
-    Player player;
     void draw();
-    
+    Map map;
+    Move pressedAction;
+    void update();
+    Camera* camera;
+
+
 
 };
 

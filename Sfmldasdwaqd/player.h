@@ -1,18 +1,19 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "MoveEntity.h"
 
 using namespace sf;
 
-class Player{
+class Player:public MoveEntity {
     private:
-    Vector2f position;
-    Sprite sprite;
-    Texture texture;
     void init();
+    int coins = 0;
+    String state = "start";
     public:
-    Player();
-    void setPosition(Vector2f pos);
-    void setTextureRect(IntRect rect);
-    Vector2f getPosition();
-    Sprite getSprite();
+    Player(Vector2f position, String imagePath);
+    int getCoins();
+    void setState(String state);
+    void setCoins(int coins);
+    String getState();
+
 };

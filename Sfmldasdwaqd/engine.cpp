@@ -6,6 +6,8 @@ Engine::Engine(){
 
 void Engine::init(){
     window.create(sf::VideoMode(1260,720),"Game");
+    pressedAction.setPlayer(map.getPlayer());
+    camera = new Camera(map.getPlayer());
 }
 
 void Engine::loop() {
@@ -17,13 +19,23 @@ void Engine::loop() {
             }
         }
         draw();
+        update();
         
     }
     
 }
 
 void Engine::draw() {
+    Text text;
+    Font font;
     window.clear(Color(0,255,0));
-    window.draw(player.getSprite());
+    window.setView(camera->getView());
+    map.draw(window);
     window.display();
+}
+
+void Engine::update() {
+    pressedAction.action();
+    map.update();
+    camera->update();
 }
